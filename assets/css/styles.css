@@ -640,6 +640,7 @@ body.light-theme {
 
 /*=============== WORK ===============*/
 
+/*=============== WORK ===============*/
 .work__container {
   padding-top: 1rem;
 }
@@ -658,17 +659,33 @@ body.light-theme {
   padding: 0.25rem 0.75rem;
   font-weight: var(--font-medium);
   border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.active-work {
+  background-color: var(--first-color);
+  color: var(--body-color);
 }
 
 .work__card {
   background-color: var(--container-color);
   padding: 1rem;
   border-radius: 1rem;
+  transition: transform 0.3s;
+  overflow: hidden;
 }
 
-.work__img {
+.work__card:hover {
+  transform: translateY(-5px);
+}
+
+.work__video {
+  width: 100%;
   border-radius: 1rem;
   margin-bottom: 0.75rem;
+  object-fit: cover;
+  height: auto;
+  max-height: 200px;
 }
 
 .work__title {
@@ -696,11 +713,6 @@ body.light-theme {
   transition: 0.4s;
 }
 
-/* Active item work*/
-.active-work {
-  background-color: var(--first-color);
-  color: var(--body-color);
-}
 
 /*=============== TESTIMONIAL ===============*/
 .testimonial__card {

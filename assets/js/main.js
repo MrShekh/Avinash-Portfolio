@@ -34,53 +34,40 @@ modalClose.forEach((mc) => {
 
 /*=============== MIXITUP FILTER PORTFOLIO ===============*/
 
-let mixer = mixitup(".work__container", {
-  selectors: {
-    target: ".work__card",
-  },
-  animation: {
-    duration: 300,
-  },
-});
+  // Initialize Mixitup
+  let mixer = mixitup(".work__container", {
+    selectors: {
+      target: ".work__card",
+    },
+    animation: {
+      duration: 300,
+    },
+  });
 
-/* Link active work */
-const workLinks = document.querySelectorAll(".work__item");
+  // Filter Button Active State
+  const workLinks = document.querySelectorAll(".work__item");
 
-function activeWork(workLink) {
+  function activeWork(workLink) {
+    workLinks.forEach((wl) => wl.classList.remove("active-work"));
+    workLink.classList.add("active-work");
+  }
+
   workLinks.forEach((wl) => {
-    wl.classList.remove("active-work");
+    wl.addEventListener("click", () => activeWork(wl));
   });
-  workLink.classList.add("active-work");
-}
 
-workLinks.forEach((wl) => {
-  wl.addEventListener("click", () => {
-    activeWork(wl);
+  // Video Autoplay on Hover
+  const videos = document.querySelectorAll(".work__video");
+
+  videos.forEach((video) => {
+    video.addEventListener("mouseenter", () => {
+      video.play();
+    });
+    video.addEventListener("mouseleave", () => {
+      video.pause();
+      video.currentTime = 0;
+    });
   });
-});
-
-/*=============== SWIPER TESTIMONIAL ===============*/
-
-let swiperTestimonial = new Swiper(".testimonial__container", {
-  spaceBetween: 24,
-  loop: true,
-  grabCursor: true,
-
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-
-  breakpoints: {
-    576: {
-      slidesPerView: 2,
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 48,
-    },
-  },
-});
 
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
